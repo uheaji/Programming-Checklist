@@ -27,7 +27,7 @@ public class ChatServer {
 				clientInfo.start();
 				vc.add(clientInfo);
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -38,6 +38,7 @@ public class ChatServer {
 		Socket socket;
 		BufferedReader reader;
 		PrintWriter writer;
+		String id;
 
 		public ClientInfo(Socket socket) {
 			this.socket = socket;
@@ -52,12 +53,15 @@ public class ChatServer {
 
 				while ((input = reader.readLine()) != null) {
 					for (ClientInfo clientInfo : vc) {
-						clientInfo.writer.println(input);
+						if (clientInfo != this) {
+							clientInfo.writer.println(input);
+						}
+
 					}
 
 				}
 			} catch (Exception e) {
-				System.out.println("서버 연결 실패" + e.getMessage());
+				System.out.println("서버 연결 실패 " + e.getMessage());
 			}
 		}
 

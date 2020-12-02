@@ -138,6 +138,7 @@ public class ChatClient extends JFrame {
 			writer.println(chat);
 			// 3번 tfChat 비우기
 			tfChat.setText(" ");
+			
 			FileWriter fw = new FileWriter("D:\\chatTest.text");
 			fw.write(taChatList.getText());
 			fw.close();

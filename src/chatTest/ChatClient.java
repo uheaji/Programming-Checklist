@@ -106,7 +106,7 @@ public class ChatClient extends JFrame {
 				String line = null;
 				while ((line = reader.readLine()) != null) {
 					System.out.println("from server : " + line);
-					taChatList.append("[상대방]" + line + "\n");
+					taChatList.append(line + "\n");
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -138,11 +138,11 @@ public class ChatClient extends JFrame {
 			writer.println(chat);
 			// 3번 tfChat 비우기
 			tfChat.setText(" ");
-			
+
 			FileWriter fw = new FileWriter("D:\\chatTest.text");
 			fw.write(taChatList.getText());
 			fw.close();
-			
+
 		} catch (Exception e) {
 
 		}
